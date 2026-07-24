@@ -2,52 +2,58 @@ package com.example.accountmanagementsystem.entity;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
+import com.example.accountmanagementsystem.enums.TransactionType;
+
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "transactions")
 public class Transaction {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private int id;
+    private String id;
 
-    private enum TransactionType{
-        DEPOSIT, WITHDRAWAL
-    }
+    public TransactionType tranctionType;
+
     private int amount;
-    private String discription;
-    
-     @Column(name = "transaction_date", nullable = false, updatable = false)
+    private String description;
+
+    @Column(name = "transaction_date", nullable = false, updatable = false)
     private LocalDateTime transactionDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_id", nullable = false)
+    private Account account;
+
+    public Transaction() {
+    }
+
+    public Transaction(int amount, String description, Account account, TransactionType transactionType) {
+        this.amount = amount;
+        this.description = description;
+        this.tranctionType = transactionType;
+        this.account = account;
+    }
+
+    public TransactionType getTranctionType() {
+        return tranctionType;
+    }
+
+    public void setTranctionType(TransactionType tranctionType) {
+        this.tranctionType = tranctionType;
+    }
 
     @PrePersist
     protected void onCreate() {
         this.transactionDate = LocalDateTime.now();
     }
 
-
-    @Enumerated(EnumType.STRING)
-    private TransactionType transactionType;
-
-    public Transaction(int id, int amount, String discription, LocalDateTime transactionDate, TransactionType transactionType) {
-        this.id = id;
-        this.amount = amount;
-        this.discription = discription;
-        this.transactionDate = transactionDate;
-        this.transactionType = transactionType;
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -59,28 +65,23 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public String getDiscription() {
-        return discription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDiscription(String discription) {
-        this.discription = discription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public LocalDateTime getTransactionDate() {
         return transactionDate;
     }
 
-    public void setTransactionDate(LocalDateTime transactionDate) {
-        this.transactionDate = transactionDate;
+    public Account getAccount() {
+        return account;
     }
 
-    public TransactionType getTransactionType() {
-        return transactionType;
+    public void setAccount(Account account) {
+        this.account = account;
     }
-
-    public void setTransactionType(TransactionType transactionType) {
-        this.transactionType = transactionType;
-    } 
-    
 }

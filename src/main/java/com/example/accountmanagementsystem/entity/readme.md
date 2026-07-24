@@ -53,23 +53,23 @@ The system shall allow users to:
 *Account Information*
 
 - Account Number (must be unique)....
-- Account Type (Savings or Current)
-- Balance
-- Date Created
-- Status (ACTIVE or CLOSED)
+- Account Type (Savings or Current)...
+- Balance...
+- Date Created...
+- Status (ACTIVE or CLOSED)...
 
 Relationship: One customer can own multiple bank accounts, but each bank account belongs to only one customer.
 
 
-3.3 Deposit
+3.3 Deposit.....
 
 The system shall allow users to deposit money into an active account.
 
 Rules:
 
-- Deposit amount must be greater than zero.
-- The account balance must be updated.
-- A transaction record must be created.
+- Deposit amount must be greater than zero....
+- The account balance must be updated....
+- A transaction record must be created....
 
 3.4 Withdrawal
 
