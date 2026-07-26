@@ -54,9 +54,7 @@ public class TransactionService {
         return transactionRepo.save(transaction);
     }
 
-    // -------------------------------------------------------------
-    // 3.4 WITHDRAWAL LOGIC
-    // -------------------------------------------------------------
+   
     @Transactional
     public Transaction withdraw(int accountNum, int amount, String description) {
         // Rule: Withdrawal amount must be greater than zero
@@ -91,6 +89,8 @@ public class TransactionService {
 
         return transactionRepo.save(transaction);
     }
+
+    
 
     
     public List<Transaction> getTransactionHistory(int accountNum) {
