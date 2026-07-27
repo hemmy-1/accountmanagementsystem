@@ -2,10 +2,13 @@ package com.example.accountmanagementsystem.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.example.accountmanagementsystem.entity.Account;
 import com.example.accountmanagementsystem.entity.CustomerInfo;
 import com.example.accountmanagementsystem.repository.CustomerInfoRepo;
 
+@Service
 public class CustomerService {
     private CustomerInfoRepo customerInfoRepo;
 

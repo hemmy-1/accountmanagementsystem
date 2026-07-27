@@ -5,14 +5,14 @@ public class CustomerInfoResponseDtos {
     private String firstName;
     private String lastName;
     private String email;
-    private int phoneNum;
+    private long phoneNum;
     private String address;
 
     public CustomerInfoResponseDtos(){
 
     }
 
-    public CustomerInfoResponseDtos(int customerId, String firstName, String lastName, String email, int phoneNum, String address) {
+    public CustomerInfoResponseDtos(int customerId, String firstName, String lastName, String email, long phoneNum, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -44,11 +44,11 @@ public class CustomerInfoResponseDtos {
         this.email = email;
     }
 
-    public int getPhoneNum() {
+    public long getPhoneNum() {
         return phoneNum;
     }
 
-    public void setPhoneNum(int phoneNum) {
+    public void setPhoneNum(long phoneNum) {
         this.phoneNum = phoneNum;
     }
 

@@ -98,7 +98,7 @@ public class TransactionService {
         if (accountRepo.existsByAccountNum(accountNum)) {
             throw new RuntimeException("Account not found with account number: " + accountNum);
         } 
-        if(transactionRepo.existsByAccountNum(accountNum)){
+        if(transactionRepo.existsByAccountAccountNum(accountNum)){
             throw new RuntimeException("no transaction found");
         }
         return transactionRepo.findByAccountAccountNum(accountNum);

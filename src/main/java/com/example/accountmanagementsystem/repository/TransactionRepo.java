@@ -12,6 +12,6 @@ public interface TransactionRepo extends JpaRepository<Transaction, Integer>{
 
     List<Transaction> findByAccountAccountNum(int accountNum);
     
-    boolean existsByAccountNum(int accountNum);
+    boolean existsByAccountAccountNum(int accountNum);
 
 }
