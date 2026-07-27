@@ -26,8 +26,8 @@ The application should enable users to:
 The system shall allow users to: 
 
 - Add a new customer.  *doneeee*
-- View all customers.
-- View a customer by ID.
+- View all customers....
+- View a customer by ID.....
 - Update customer details.
 - Delete a customer.
 

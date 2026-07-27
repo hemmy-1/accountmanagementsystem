@@ -1,9 +1,10 @@
 package com.example.accountmanagementsystem.service;
 
 import com.example.accountmanagementsystem.entity.Account;
-import com.example.accountmanagementsystem.entity.Account.AccountStatus;
+
 import com.example.accountmanagementsystem.entity.Transaction;
 import com.example.accountmanagementsystem.enums.TransactionType;
+import com.example.accountmanagementsystem.enums.AccountStatus;
 import com.example.accountmanagementsystem.repository.AccountRepo;
 import com.example.accountmanagementsystem.repository.TransactionRepo;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,7 @@ public class TransactionService {
                 .orElseThrow(() -> new RuntimeException("Account not found with account number: " + accountNum));
 
 
-        if (account.getStatus() != AccountStatus.ACTIVE) {
+        if (account.getAccountStatus() != AccountStatus.ACTIVE) {
             throw new IllegalStateException("Cannot deposit into an inactive or closed account.");
         }
 
@@ -66,7 +67,7 @@ public class TransactionService {
                 .orElseThrow(() -> new RuntimeException("Account not found with account number: " + accountNum));
 
 
-                if (account.getStatus() != Account.AccountStatus.ACTIVE) {
+                if (account.getAccountStatus() != AccountStatus.ACTIVE) {
             throw new IllegalStateException("Cannot withdraw from an inactive or closed account.");
         }
 

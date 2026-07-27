@@ -2,6 +2,9 @@ package com.example.accountmanagementsystem.entity;
 
 import java.time.LocalDateTime;
 
+import com.example.accountmanagementsystem.enums.AccountStatus;
+import com.example.accountmanagementsystem.enums.AccountType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -25,19 +28,10 @@ public class Account {
 
     private int accountNum;
 
-    public enum AccountType {
-        SAVINGS, CURRENT
-    }
+    public AccountType accountType;
+        
 
-    public enum AccountStatus {
-        ACTIVE, CLOSED
-    }
-
-    @Enumerated(EnumType.STRING)
-    private AccountType accountType;
-
-    @Enumerated(EnumType.STRING)
-    private AccountStatus status;
+    public AccountStatus accountStatus;
 
     private int accountBalance;
 
@@ -60,11 +54,11 @@ public class Account {
     public Account() {
     }
 
-    public Account(int accountNum, AccountType accountType, int accountBalance, AccountStatus status) {
+    public Account(int accountNum, AccountType accountType, int accountBalance, AccountStatus accountStatus) {
         this.accountNum = accountNum;
         this.accountType = accountType;
         this.accountBalance = accountBalance;
-        this.status = status;
+        this.accountStatus = accountStatus;
     }
 
     @PrePersist
@@ -96,12 +90,12 @@ public class Account {
         this.accountType = accountType;
     }
 
-    public AccountStatus getStatus() {
-        return status;
+    public AccountStatus getAccountStatus() {
+        return accountStatus;
     }
 
-    public void setStatus(AccountStatus status) {
-        this.status = status;
+    public void setAccountStatus(AccountStatus accountStatus) {
+        this.accountStatus = accountStatus;
     }
 
     public int getAccountBalance() {

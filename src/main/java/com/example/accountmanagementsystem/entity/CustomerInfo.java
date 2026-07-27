@@ -1,5 +1,6 @@
 package com.example.accountmanagementsystem.entity;
 
+
 public class CustomerInfo {
     private int customerId;
     private String firstName;
