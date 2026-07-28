@@ -17,7 +17,8 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "accounts") // Good practice to name your DB table explicitly
+@Table(name = "accounts") 
+
 public class Account {
 
     @Id

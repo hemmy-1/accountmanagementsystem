@@ -33,7 +33,7 @@ The system shall allow users to:
 
 *Customer Information*
 
-- First Name  *doneee*
+- First Name  *done*
 - Last Name
 - Email
 - Phone Number

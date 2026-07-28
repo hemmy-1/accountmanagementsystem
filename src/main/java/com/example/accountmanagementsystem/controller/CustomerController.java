@@ -15,34 +15,17 @@ import java.util.List;
 public class CustomerController {
 
     private final CustomerService customerService;
-    private CustomerInfoRepo customerInfoRepo;
 
-    public CustomerController(CustomerService customerService, CustomerInfoRepo customerInfoRepo) {
+    public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
-        this.customerInfoRepo = customerInfoRepo;
     }
 
     @PostMapping("/create")
     public CustomerInfoResponseDtos registerCustomer(@RequestBody CustomerInfoRequestDtos customers) {
 
-        CustomerInfo addCustomers = new CustomerInfo();
-        addCustomers.setFirstName(customers.getFirstName());
-        addCustomers.setLastName(customers.getLastName());
-        addCustomers.setPhoneNum(customers.getPhoneNum());
-        addCustomers.setAddress(customers.getAddress());
-        addCustomers.setEmail(customers.getEmail());
-
-        CustomerInfo savedCustomer = customerInfoRepo.save(addCustomers);
-
-        CustomerInfoResponseDtos response = new CustomerInfoResponseDtos();
-        response.setCustomerId(savedCustomer.getCustomerId());
-        response.setFirstName(savedCustomer.getFirstName());
-        response.setLastName(savedCustomer.getLastName());
-        response.setEmail(savedCustomer.getEmail());
-        response.setPhoneNum(savedCustomer.getPhoneNum());
-        response.setAddress(savedCustomer.getAddress());
-
-        return response;
+       int id = customerService.addCustomer(customers);
+         
+        return new CustomerInfoResponseDtos(id, customers.getFirstName(), customers.getLastName(), customers.getEmail(), customers.getPhoneNum(), customers.getAddress() );
     }
 
     @GetMapping("/{customerId}")

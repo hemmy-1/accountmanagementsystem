@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.accountmanagementsystem.dtos.CustomerInfoRequestDtos;
 import com.example.accountmanagementsystem.entity.Account;
 import com.example.accountmanagementsystem.entity.CustomerInfo;
 import com.example.accountmanagementsystem.repository.CustomerInfoRepo;
@@ -16,8 +17,21 @@ public class CustomerService {
         this.customerInfoRepo = customerInfoRepo;
     }
 
-    public void addCustomer(CustomerInfo customerInfo){
-        customerInfoRepo.save(customerInfo);
+    public int addCustomer(CustomerInfoRequestDtos customerInfo){
+
+        CustomerInfo cCustomer = new CustomerInfo();
+       
+
+        cCustomer.setFirstName(customerInfo.getFirstName());
+        cCustomer.setLastName(customerInfo.getLastName());
+        cCustomer.setAddress(customerInfo.getAddress());
+        cCustomer.setPhoneNum(customerInfo.getPhoneNum());
+        cCustomer.setEmail(customerInfo.getEmail());
+       
+
+
+        customerInfoRepo.save(cCustomer);
+        return cCustomer.getCustomerId();
     }
 
     public List<CustomerInfo> allCustomer(){
